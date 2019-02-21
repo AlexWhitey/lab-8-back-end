@@ -2,7 +2,7 @@ DROP TABLE weathers, meetups, locations;
 
 CREATE TABLE IF NOT EXISTS locations (
   id SERIAL PRIMARY KEY,
-  search__query VARCHAR(255),
+  search_query VARCHAR(255),
   formatted_query VARCHAR(255),
   latitude NUMERIC(8,6),
   longitude NUMERIC(9,6)
