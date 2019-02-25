@@ -282,7 +282,7 @@ function getTrails(request, response) {
           .then(result => {
             const trailSummary = result.body.trails.map(trail => {
               const event = new Trail(trail)
-              // console.log(event);
+              console.log(event);
               return event;
             })
             let newSQL = `INSERT INTO trails(name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id)  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
