@@ -112,7 +112,7 @@ function getLocation(query) {
       // Check to see if the location was found and return the results
       if (result.rowCount > 0) {
         console.log('From SQL');
-        return result.rows[0];
+        return result.rows;
 
         // Otherwise get the location information from the Google API
       } else {
@@ -164,7 +164,7 @@ function getWeather(request, response) {
       //Check to see if the location was found and return the results
       if (result.rowCount > 0) {
         console.log('From SQL');
-        response.send(result.rows[0]);
+        response.send(result.rows);
         // Otherwise get the location information from Dark Sky
       } else {
         const url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
@@ -201,7 +201,7 @@ function getMeetups(request, response) {
       //check to see if the location was found and return the results
       if (result.rowCount > 0) {
         console.log('From SQL');
-        response.send(result.rows[0]);
+        response.send(result.rows);
         //Otherwise get the location from MeetUps
       } else {
         const url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${process.env.MEETUP_API_KEY}`
@@ -238,7 +238,7 @@ function getMovies(request, response) {
     .then(result => {
       if (result.rowCount > 0) {
         console.log('From SQL');
-        response.send(result.rows[0]);
+        response.send(result.rows);
       } else {
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${request.query.data.search_query}&page=1&include_adult=false`
 
@@ -274,7 +274,7 @@ function getTrails(request, response) {
     .then(result => {
       if (result.rowCount > 0) {
         console.log('From SQL');
-        response.send(result.rows[0]);
+        response.send(result.rows);
       } else {
         const url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=10&key=${process.env.TRAIL_API_KEY}`;
 
@@ -310,7 +310,7 @@ function getYelp(request, response) {
     .then(result => {
       if (result.rowCount > 0) {
         console.log('From SQL');
-        response.send(result.rows[0]);
+        response.send(result.rows);
       } else {
         // Call to yelp
         const url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
